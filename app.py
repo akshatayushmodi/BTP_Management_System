@@ -15,7 +15,7 @@ from bson.errors import InvalidId
 app = Flask(__name__)
 
 # Your MongoDB connection string
-CONNECTION_STRING = "mongodb+srv://Lancer:Hh9Rr7h17GIgSPY1@cluster0.nf6kpbe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+CONNECTION_STRING = "mongodb+srv://aks:aks@atlascluster.6h3okzb.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"
 
 
 app.config["MONGO_URI"] = CONNECTION_STRING
