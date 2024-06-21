@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Guide Applications</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Co-Guide Applications</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Application ID</th>
+                    <th>BTP ID</th>
+                    <th>BTP Name</th>
+                    <th>Faculty Name</th>
+                    <th>Faculty Email</th>
+                    <th>Roll No</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application._id }}</td>
+                    <td>{{ application.btp_id }}</td>
+                    <td>{{ application.btp_name }}</td>
+                    <td>{{ application.faculty_name }}</td>
+                    <td>{{ application.faculty_email }}</td>
+                    <td>{{ application.roll_no }}</td>
+                    <td>{{ application.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .delete-button {
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+        <style>
+            /* Flash messages styling */
+            .flash-message {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                padding: 10px;
+                background-color: #f8d7da;
+                /* Error message background color */
+                color: #721c24;
+                /* Error message text color */
+                border-radius: 5px;
+                animation: fadeOut 8s forwards;
+                /* Automatically fade out after 8 seconds */
+            }
+    
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+    
+                100% {
+                    opacity: 0;
+                    display: none;
+                }
+            }
+        </style>
+    <script>
+        function showApprovalMessage() {
+            alert("This application is already approved and cannot be deleted.");
+        }
+    </script>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="flash-message">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1>Your Applications</h1>
+    {% if applications %}
+        <table>
+            <tr>
+                <th>Project</th>
+                <th>Professor</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for application in applications %}
+                <tr>
+                    <td>{{ application.btp_name }}</td>
+                    <td>{{ application.prof_name }}</td>
+                    <td>{{ application.department }}</td>
+                    <td>{{ application.email }}</td>
+                    <td>{{ application.status }}</td>
+                    <td>
+                        {% if application.status != "Approved" %}
+                            <!-- Delete button for non-approved applications -->
+                            <form action="{{ url_for('delete_application', application_id=application._id) }}" method="post">
+                                <button class="delete-button" type="submit">Delete</button>
+                            </form>
+                        {% else %}
+                            <!-- Button that shows a message for approved applications -->
+                            <button class="delete-button" onclick="showApprovalMessage()">Delete</button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You have no applications.</p>
+    {% endif %}
+</body>
+</html>

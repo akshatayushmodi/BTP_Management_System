@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Submission Details</title>
+</head>
+<body>
+    <h1>Set Submission Details</h1>
+    <form method="post">
+        <label for="submission_deadline">Submission Deadline:</label>
+        <input type="datetime-local" id="submission_deadline" name="submission_deadline" required><br>
+        <label for="full_marks">Full Marks:</label>
+        <input type="number" id="full_marks" name="full_marks" required><br>
+        <label for="students">Select Students:</label>
+        <select id="students" name="students" multiple required>
+            {% for student in context.students %}
+                <option value="{{ student }}">{{ student }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Set Submission Details</button>
+    </form>
+</body>
+</html>

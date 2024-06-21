@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects List</title>
+</head>
+<body>
+    <h1>Projects List</h1>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <h2>{{ project.btp_name }}</h2>
+                <p>Project ID: {{ project.btp_id }}</p>
+                <form action="{{ url_for('set_submission_details', btp_id=project.btp_id) }}" method="GET">
+                    <button type="submit">Set Submission Details</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
