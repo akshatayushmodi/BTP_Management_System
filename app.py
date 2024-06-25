@@ -48,8 +48,8 @@ def index():
     if session.get('id') and session.get('role') == 'admin':
         return redirect('/admin_home')
     
-    # return render_template("home.html")
-    return "Hello World!"
+    return render_template("login.html")
+    # return "Hello World!"
 
 def send_otp_signup(otp ,receiver_email):
     sender_email = "testemailskgp@gmail.com"
