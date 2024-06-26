@@ -15,7 +15,7 @@ from bson.errors import InvalidId
 app = Flask(__name__)
 
 # Your MongoDB connection string
-CONNECTION_STRING = "mongodb+srv://aks:aks@atlascluster.6h3okzb.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"
+CONNECTION_STRING = "mongodb+srv://Lancer:Hh9Rr7h17GIgSPY1@cluster0.nf6kpbe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 
 app.config["MONGO_URI"] = CONNECTION_STRING
@@ -52,13 +52,13 @@ def index():
     # return "Hello World!"
 
 def send_otp_signup(otp ,receiver_email):
-    sender_email = "testemailskgp@gmail.com"
+    sender_email = "xxx@gmail.com"
     subject = "OTP for Email Verification in BTP Report Management Website"
 
     body = "Welcome to BTP Report Management System !!!"+ "\nOTP: " + str(otp) + "\nUse this otp for verifying your Institute Email Id.\n\nRegards, \nBTP Report Management System"
 
     # password = input("Type your password and press enter:")
-    password = "rlfm iyro bnpe zexv"
+    password = "xxx"
 
     # Create a multipart message and set headers
     message = MIMEMultipart()
@@ -208,7 +208,7 @@ def login():
     return render_template('login.html')
 
 def send_otp_forgot_password(otp ,receiver_email):
-    sender_email = "testemailskgp@gmail.com"
+    sender_email = "xxx@gmail.com"
     subject = "OTP for Resetting Password in BTP Report Management Website"
 
     body = "Welcome to BTP Report Management System !!!" + "\nOTP: " + str(otp) + "\nUse this otp to reset your password.\n\nRegards, \nBTP Report Management System"
